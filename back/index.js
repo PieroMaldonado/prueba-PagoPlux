@@ -2,6 +2,7 @@ import express from 'express'
 import { getConnection} from './database/connection.js'
 import dotenv from 'dotenv'
 import loginRoutes from './routes/authRoutes.js'
+import pagoPluxRoutes from './routes/pagoPluxRoutes.js'
 import cors from 'cors';
 
 
@@ -24,5 +25,7 @@ app.get('/', (req, res) => {
 app.listen(PORT, () => {
     console.log(`Servidor corriendo en el puerto ${PORT}`)
 })
+
+app.use(pagoPluxRoutes)
 
 app.use(loginRoutes)
