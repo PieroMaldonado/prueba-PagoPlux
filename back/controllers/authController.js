@@ -1,7 +1,4 @@
-import dotenv from 'dotenv';
 import { loginService, registerService } from '../services/authService.js';
-
-dotenv.config();
 
 export const login = async (req, res) => {
     const { status, data } = await loginService(req.body.username, req.body.password);

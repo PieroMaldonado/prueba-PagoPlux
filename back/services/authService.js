@@ -1,9 +1,7 @@
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
 import { findUser, createUser } from '../models/userModel.js';
-import dotenv from 'dotenv';
 
-dotenv.config();
 
 export const loginService = async (username, password) => {
     if (!username || !password) {

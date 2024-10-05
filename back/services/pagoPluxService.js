@@ -1,7 +1,4 @@
 import axios from "axios";
-import dotenv from "dotenv";
-
-dotenv.config()
 
 const BASE_URL = process.env.PAGOPLUX_BASE_URL; 
 const AUTH_HEADER = 'Basic ' + Buffer.from(`${process.env.PAGOPLUX_API_CLIENT}:${process.env.PAGOPLUX_API_SECRET}`).toString('base64');
