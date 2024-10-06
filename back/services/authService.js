@@ -37,6 +37,19 @@ export const registerService = async (username, password) => {
     return { status: 201, data: { token } };
 };
 
+export const validateTokenService = async (token) => {
+    if (!token) {
+        return { status: 200, isValid: false };
+    }
+
+    try {
+        jwt.verify(token, process.env.JWT_SECRET);
+        return { status: 200, isValid: true };
+    } catch (error) {
+        return { status: 200, isValid: false };
+    }
+};
+
 const generateToken = (user) => {
     return jwt.sign({ id: user.id, username: user.username }, process.env.JWT_SECRET, { expiresIn: '1h' });
 };
