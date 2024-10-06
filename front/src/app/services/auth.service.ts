@@ -17,4 +17,8 @@ export class AuthService {
   login(objeto:ILogin): Observable<IResponseLogin>{
     return this.http.post<IResponseLogin>(`${this.baseUrl}login`, objeto)
   }
+
+  validateToken(token: string): Observable<{ isValid: boolean }> {
+    return this.http.get<{ isValid: boolean }>(`${this.baseUrl}validate-token?token=${token}`);
+  }
 }
