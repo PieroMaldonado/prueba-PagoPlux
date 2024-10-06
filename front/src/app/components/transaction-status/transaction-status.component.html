@@ -1,5 +1,5 @@
 <div class="transaction-status-container">
-    <button mat-raised-button color="primary" (click)="getTransactionStatus()">
-        Estado de la transacción
+    <button mat-raised-button color="primary" (click)="getTransactionStatus()" [disabled]="isLoading">
+        {{ isLoading ? 'Consultando el estado...' : 'Estado de la transacción' }}
     </button>
 </div>

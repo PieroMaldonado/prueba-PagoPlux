@@ -8,9 +8,6 @@ import { Component, OnInit } from '@angular/core';
   styleUrl: './pagoplux-button.component.css'
 })
 export class PagopluxButtonComponent implements OnInit {
-  data = {
-
-  }
 
   ngOnInit(): void {
     window.data =
@@ -23,14 +20,14 @@ export class PagopluxButtonComponent implements OnInit {
       PayboxSendmail: "test@test.com",
       /* Rquerido. Nombre del usuario/cuenta PagoPlux o Id/Class del
       elemento html que posee el valor */
-      PayboxRename: "Comecio Prueba",
+      PayboxRename: "Comercio Prueba",
       /* Opcional. nombre de persona que realiza el pago o Id/Class del
       elemento html */
       PayboxSendname: "John Doe",
       /* Requerido. Valor Base 0. Valor que no incluye impuesto */
       PayboxBase0: "2.0",
       /* Requerido. Valor Base 12. Valor que si incluye impuesto */
-      PayboxBase12: "10.0",
+      PayboxBase12: "25.0",
       /* Requerido. Descripcion del pago o Id/Class del elemento html que
       posee el valor */
       PayboxDescription: "Compra muebles",
@@ -128,7 +125,10 @@ export class PagopluxButtonComponent implements OnInit {
 
     window.onAuthorize = (response: any) => {
       if (response.status === 'succeeded') {
-        console.log('Pago exitoso', response);
+        const transactionId = response.detail.id_transaccion;
+        localStorage.setItem('transactionId', transactionId);
+        console.log('Pago exitoso', response)
+        alert('Pago exitoso')
       }
     };
 

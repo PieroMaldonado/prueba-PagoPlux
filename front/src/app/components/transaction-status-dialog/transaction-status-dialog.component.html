@@ -1,0 +1,27 @@
+<!-- <h2 mat-dialog-title>Prueba</h2>
+<mat-dialog-content>
+    <p>What's your favorite animal?</p>
+    <mat-form-field>
+        <mat-label>Favorite Animal</mat-label>
+        <input matInput />
+    </mat-form-field>
+</mat-dialog-content>
+<mat-dialog-actions>
+    <button mat-button>No Thanks</button>
+    <button mat-button [mat-dialog-close]="" cdkFocusInitial>Ok</button>
+</mat-dialog-actions> -->
+
+<h2 mat-dialog-title>Estado de la Transacción</h2>
+<mat-dialog-content>
+    <p><strong>Estado:</strong> {{ data.detail.respuest.catalogos.nombre_catalogo }}</p>
+    <p><strong>Voucher:</strong> {{ data.detail.respuest.voucher }}</p>
+    <p><strong>Fecha Transacción:</strong> {{ data.detail.respuest.fecha_transaccion }}</p>
+    <p><strong>Nombre del Cliente:</strong> {{ data.detail.respuest.cliente.nombres }}</p>
+    <p><strong>Identificación del Cliente:</strong> {{ data.detail.respuest.cliente.numero_identificacion }}</p>
+    <p><strong>Monto:</strong> {{ data.detail.respuest.monto }} USD</p>
+    <p><strong>Banco Emisor:</strong> {{ data.detail.respuest.emisor_tarjeta }}</p>
+    <p><strong>Número de cuotas:</strong> {{ data.detail.respuest.numero_cuotas }}</p>
+</mat-dialog-content>
+<mat-dialog-actions>
+    <button mat-button (click)="onNoClick()">Cerrar</button>
+</mat-dialog-actions>
