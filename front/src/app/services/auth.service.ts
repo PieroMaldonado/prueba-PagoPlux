@@ -4,6 +4,7 @@ import { appsettings } from '../settings/appsettings';
 import { ILogin } from '../interfaces/ILogin';
 import { Observable } from 'rxjs';
 import { IResponseLogin } from '../interfaces/IResponseLogin';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -11,6 +12,7 @@ import { IResponseLogin } from '../interfaces/IResponseLogin';
 export class AuthService {
   private http = inject(HttpClient)
   private baseUrl:string = appsettings.apiUrl
+  private router = inject(Router)
 
   constructor() { }
 
@@ -20,5 +22,11 @@ export class AuthService {
 
   validateToken(token: string): Observable<{ isValid: boolean }> {
     return this.http.get<{ isValid: boolean }>(`${this.baseUrl}validate-token?token=${token}`);
+  }
+
+  logout() {
+    localStorage.removeItem('token')
+    localStorage.removeItem('transactionId')
+    this.router.navigate(['']);
   }
 }

@@ -38,7 +38,13 @@ export class LoginComponent {
         this.router.navigate(['/home'])
       },
       error: (error) => {
-        console.error(error)
+        if (error.status === 401) {
+          alert(error.error.message || 'Unauthorized access. Please check your credentials.');
+        } else if (error.status === 400) {
+          alert(error.error.message || 'Bad request. Please check your input.');
+        } else {
+          alert('An unexpected error occurred. Please try again later.');
+        }
       }
     })
   }
